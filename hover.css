@@ -1,0 +1,55 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.watch-container {
+    display: flex;
+    gap: 20px;
+}
+
+.watch {
+    position: relative;
+    overflow: hidden;
+}
+
+.watch img {
+    display: block;
+    max-width: 100%;
+    transition: transform 0.5s;
+}
+
+.watch::after {
+    content: '';
+    position: absolute;
+    bottom: -50%; /* Adjust this value to control the reflection length */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    transform: scaleY(-1);
+    opacity: 0.3; /* Adjust this value to control the reflection opacity */
+    pointer-events: none;
+}
+
+.watch:hover img {
+    transform: translateY(-20px);
+}
+
+.watch:hover::after {
+    bottom: 0; /* Adjust this value to control the hover reflection position */
+    animation: reflect 0.5s forwards;
+}
+
+@keyframes reflect {
+    0% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0.1; /* Adjust this value to control the final reflection opacity on hover */
+    }
+}
